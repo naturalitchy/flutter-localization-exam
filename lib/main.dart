@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
 
 
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
@@ -60,6 +60,8 @@ Future<void> main() async {
         supportedLocales: [Locale('en', 'US'), Locale('ko', 'KO')],
         path: 'assets/translations', // <-- change the path of the translation files
         fallbackLocale: Locale('ko', 'KO'),
+        saveLocale: true,           // auto true.
+        startLocale: Locale('ko', 'KO'),
         child: MyApp(),
 
     ),
@@ -77,14 +79,13 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
+    // super.initState();
     // context.setLocale(Locale('en', 'US'));
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
